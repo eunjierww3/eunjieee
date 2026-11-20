@@ -1,0 +1,155 @@
+/* 전체 박스 크기 계산을 직관적으로 통일 */
+* {
+  box-sizing: border-box;
+}
+
+/* 일반 웹페이지 세로 흐름(위 -> 아래) */
+body {
+  margin: 0;
+  padding: 32px 20px;
+  background-color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+  color: #1e293b;
+}
+
+/* 본문 영역 컨테이너 */
+.todo-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+/* 제목과 안내 문구 */
+#title {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+#message {
+  margin: 0 0 20px;
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+/* 입력창 + 추가 버튼 세로 배치 */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+#todoInput {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  color: #1e293b;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+}
+
+#todoInput:focus {
+  border-color: #2563eb;
+}
+
+/* '추가' 버튼 */
+button[onclick="addTodo()"],
+.add-btn {
+  align-self: flex-start;
+  padding: 9px 16px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #2563eb;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button[onclick="addTodo()"]:hover,
+.add-btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* 전체 / 완료 개수 표시 */
+#todoCount {
+  margin: 0 0 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+/* 할 일 목록 ul (위에서 아래로 세로 쌓기) */
+#todoList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 각 할 일 항목 li */
+#todoList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+/* 할 일 텍스트 span (클릭 시 완료 토글) */
+#todoList li span {
+  flex: 1;
+  cursor: pointer;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+/* 완료 상태: 회색 글씨 + 취소선 (다시 클릭 시 원상복구) */
+#todoList li span.completed {
+  color: #888888;
+  text-decoration: line-through;
+}
+
+/* 삭제 버튼 */
+#todoList li button {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  color: #b91c1c;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+#todoList li button:hover {
+  color: #ffffff;
+  background-color: #dc2626;
+}
+
+/* 좁은 화면 대응 */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 12px;
+  }
+
+  .todo-card {
+    padding: 18px 16px;
+  }
+
+  #title {
+    font-size: 1.45rem;
+  }
+}
